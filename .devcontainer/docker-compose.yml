@@ -1,0 +1,15 @@
+version: '3.9'
+
+services:
+  app:
+    build: ./app
+    working_dir: /home/node/app
+    volumes:
+      - ../:/home/node/app
+    command: redis-commander --redis-host redis
+    ports:
+      - "8081:8081"
+  redis:
+    build: ./redis
+    ports:
+      - '6379:6379'
